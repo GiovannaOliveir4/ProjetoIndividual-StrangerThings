@@ -7,3 +7,28 @@
     text-decoration: none;
     list-style: none;
 }
+
+.header .container {
+    display: flex;
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    height: 13%;
+    align-items: center;
+}
+
+.header .container img {
+    width: 10%;
+    padding-left: 5%;
+}
+
+.navbar {
+    display: flex;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.navbar li {
+    padding: 20%;
+}
+
