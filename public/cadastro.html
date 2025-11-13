@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro</title>
+
+    <link rel="stylesheet" href="css/estilo.css" />
+    <link rel="icon" href="assets/icon/logo.jpg">
+</head>
+<body>
+    <div class="login">
+        <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+        </div>
+        <div class="container">
+        <div class="card card-cadastro">
+            <h2>Cadastre-se e vire um Stranger Fã!</h2>
+            <div class="formulario">
+            <div class="campo">
+                <span>Nome:</span><br>
+                <input id="nome_input" type="text" placeholder="Seu nome" />
+            </div>
+            <div class="campo">
+                <span>Email:</span><br>
+                <input id="email_input" type="text" placeholder="nome@email.com" />
+            </div>
+            <div class="campo">
+                <span>Senha:</span><br>
+                <input id="senha_input" type="password" placeholder="******" />
+            </div>
+            <div class="campo">
+                <span>Confirmação da Senha:</span><br>
+                <input id="confirmacao_senha_input" type="password" placeholder="******" />
+            </div>
+            
+            <button class="botao" onclick="cadastrar()">Cadastrar</button>
+            
+            </div>
+            </div>
+
+            <div id="div_msg"></div>
+        </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+        var nome = nome_input.value;
+        var email = email_input.value;
+        var senha = senha_input.value;
+        var confirmacao_senha = confirmacao_senha_input.value;
+
+        if (nome == "" || email == "" || senha == "" || confirmacao_senha == "") {
+            msg = `Preencha todos os campos!`;
+        } else if (email)
+
+        div_msg.innerHTML = msg;
+    }
+</script>
