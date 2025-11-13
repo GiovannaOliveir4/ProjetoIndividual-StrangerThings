@@ -58,3 +58,133 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+/* CADASTRO */
+.main {
+    width: 100%;
+    height: 100vh;
+    background-color: #421C1F;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-cad {
+    height: 100vh;
+    margin-right: auto;
+}
+
+.banner-cad img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-cad {
+    width: 50vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 90px;
+}
+
+/* voltar */
+.row_voltar {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    padding: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.div_voltar {
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.div_voltar:hover {
+    transform: scale(1.1);
+}
+
+.card-cad {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 35px 25px;
+    height: 100%;
+    background-color: #331618;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #1d0d0f;
+}
+
+.card-cad h1 {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0;
+    padding: 20px;
+}
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.textfield input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 12pt;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.textfield span {
+    margin-bottom: 10px;
+}
+
+.btn-cad {
+    width: 62%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #421C1F;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #1d0d0f;
+}
+
+#mensagem_erro {
+    color: red;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: -10px;
+    text-align: center;
+}
+
+p {
+    margin-top: -5px;
+}
