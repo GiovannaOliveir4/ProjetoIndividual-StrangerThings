@@ -13,37 +13,43 @@
 <body>
      <div class="main">
 
-    <div class="main-login">
+    <div class="main-cad">
         <div class="row_voltar"> <!-- seta de voltar -->
             <a href="index.html" class="div_voltar"><span style="font-size: 50px; color: #000;"
                 class="material-symbols-outlined">keyboard_backspace</span></a>
         </div> <!-- fim seta -->
 
         <div class="banner-cad">
-            <img src="assets/imgs/fundo-c-demogorgon.jpg" alt="">
+            <img src="assets/imgs/cadastro.jpg" alt="">
         </div>
         <div class="form-cad">
             <div class="card-cad">
                 <h1>Cadastre-se e vire um Stranger Fã!</h1>
                 <div class="textfield">
                     <span>Nome:</span>
-                    <input type="text" id="nome_input" placeholder="ex: Giovanna">
+                    <input type="text" id="nome_input" placeholder="ex: Giovanna" style="border: 3px solid black;">
                 </div>
                 <div class="textfield">
                     <span>E-mail:</span>
-                    <input type="text" id="email_input" placeholder="ex: giovanna@email.com">
+                    <input type="text" id="email_input" placeholder="ex: giovanna@email.com" style="border: 3px solid black;">
                 </div>
                 <div class="textfield">
                      <span>Senha:</span>
-                    <input type="password" id="senha_input">
+                    <input type="password" id="senha_input" style="border: 3px solid black;">
                 </div>
                 <div class="textfield">
                     <span>Confirmação da Senha:</span>
-                    <input type="password" id="confirmacao_senha_input">
+                    <input type="password" id="confirmacao_senha_input" style="border: 3px solid black;">
+                    <div class="msg" id="div_msgSenha" style="color: red; padding-top: 2%;"></div>
+                    <div id="mostrarSenha">
+                        <input  type="checkbox" onclick="mostrarSenha()"> 
+                        <p>MOSTRAR </p>
+                        <p>SENHA</p>
+                    </div>
                 </div>
                 <button class="btn-cad" onclick="cadastrar()">CADASTRAR</button>
-                    <span id="mensagem_erro"></span><br>
-                <p>Já possui uma conta? <a href="" style="color: white; font-weight: bolder;">Iniciar sessão</a></p>
+                    <div id="div_msgErro"></div><br>
+                <p>Já possui uma conta? <a href="login.html" style="color: white; font-weight: bolder;">Iniciar sessão</a></p>
             </div>
         </div>
     </div>
@@ -51,16 +57,98 @@
 </html>
 
 <script>
+    var listaObrigatorio = ['!', '@', '#', '$', '%', '*', '.', '_', '-'];
+
+    function mostrarSenha() {
+        var senha = senha_input;
+        var confSenha = confirmacao_senha_input;
+
+        if (senha.type == 'password') {
+            senha.type = 'text';
+            confSenha.type = 'text';
+        } else {
+            senha.type = 'password';
+            confSenha.type = 'password';
+        }
+    }
+
     function cadastrar() {
         var nome = nome_input.value;
         var email = email_input.value;
         var senha = senha_input.value;
-        var confirmacao_senha = confirmacao_senha_input.value;
+        var confSenha = confirmacao_senha_input.value;
 
-        if (nome == "" || email == "" || senha == "" || confirmacao_senha == "") {
+        nome_input.style.border = "3px solid black";
+        email_input.style.border = "3px solid black";
+        senha_input.style.border = "3px solid black";
+        confirmacao_senha_input.style.border = "3px solid black";
+
+        var msgSenha = "";
+        var msg = "";
+
+        var nom = false;
+        var emai = false;
+        var senh = false;
+
+        if (nome == "" || email == "" || senha == "" || confSenha == "") {
+            nome_input.style.border = "3px solid red";
+            email_input.style.border = "3px solid red";
+            senha_input.style.border = "3px solid red";
+            confirmacao_senha_input.style.border = "3px solid red";
             msg = `Preencha todos os campos!`;
-        } else if (email)
+        } 
 
-        div_msg.innerHTML = msg;
+        if (nome != "") {
+            nom = true;
+            nome_input.style.border = "3px solid green";
+        }
+
+        if (email.endsWith('@gmail.com') || email.endsWith('@gmail.com.br') || 
+        email.endsWith('@hotmail.com') || email.endsWith('@hotmail.com.br') || 
+        email.endsWith('@@outlook.com') || email.endsWith('@outlook.com.br') || 
+        email.endsWith('@yahoo.com') || email.endsWith('@yahoo.com.br') || 
+        email.endsWith('@sptech.school')) {
+            // o email precisa terminar com umas dessas validaçôes.
+            emai = true;
+            email_input.style.border = "3px solid green";
+        } else {
+            email_input.style.border = "3px solid red";
+        }
+
+        var tamSenha = senha.length;
+
+        if (senha != confSenha) {
+            senha_input.style.border = "3px solid red";
+            confirmacao_senha_input.style.border = "3px solid red";
+            msgSenha = `Senhas precisam ser iguais!`;
+        } else if (senha != "" && tamSenha < 6) {
+            senha_input.style.border = "3px solid red";
+            confirmacao_senha_input.style.border = "3px solid red";
+            msgSenha = `Senha precisa conter no mínimo 6 caracteres!`
+        } else if (senha == "" || confSenha == "") {
+            senha_input.style.border = "3px solid red";
+            confirmacao_senha_input.style.border = "3px solid red";
+        } else {
+            var i = 0;
+            var contemAlgum = false;
+
+            while (i < listaObrigatorio.length) {
+                if (senha.includes(listaObrigatorio[i])) {
+                    contemAlgum = true;
+                }
+                i++;
+            }
+
+            if (contemAlgum == false) {
+                msgSenha = "Senha inválida! Falta caractere especial (! @ # $ % * . _ -)";
+            } else {
+                senh = true;
+                senha_input.style.border = "3px solid green";
+                confirmacao_senha_input.style.border = "3px solid green";
+            }
+        }
+
+        div_msgErro.innerHTML = msg;
+        div_msgSenha.innerHTML = msgSenha;
     }
 </script>
