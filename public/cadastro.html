@@ -10,6 +10,7 @@
     
     <link rel="icon" href="assets/icon/logo.jpg">
 </head>
+
 <body>
      <div class="main">
 
@@ -73,41 +74,49 @@
     }
 
     function cadastrar() {
-        var nome = nome_input.value;
-        var email = email_input.value;
-        var senha = senha_input.value;
-        var confSenha = confirmacao_senha_input.value;
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
         nome_input.style.border = "3px solid black";
         email_input.style.border = "3px solid black";
         senha_input.style.border = "3px solid black";
         confirmacao_senha_input.style.border = "3px solid black";
 
-        var msgSenha = "";
-        var msg = "";
-
         var nom = false;
         var emai = false;
         var senh = false;
 
-        if (nome == "" || email == "" || senha == "" || confSenha == "") {
+        // Verificando se há algum campo em branco
+        if (
+        nomeVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == ""
+        ) {
             nome_input.style.border = "3px solid red";
             email_input.style.border = "3px solid red";
             senha_input.style.border = "3px solid red";
             confirmacao_senha_input.style.border = "3px solid red";
-            msg = `Preencha todos os campos!`;
+            div_msgErro.innerHTML = `Preencha todos os campos!`;
+
+        return false;
         } 
 
-        if (nome != "") {
+        if (nomeVar != "") {
             nom = true;
             nome_input.style.border = "3px solid green";
         }
 
-        if (email.endsWith('@gmail.com') || email.endsWith('@gmail.com.br') || 
-        email.endsWith('@hotmail.com') || email.endsWith('@hotmail.com.br') || 
-        email.endsWith('@@outlook.com') || email.endsWith('@outlook.com.br') || 
-        email.endsWith('@yahoo.com') || email.endsWith('@yahoo.com.br') || 
-        email.endsWith('@sptech.school')) {
+        
+        if (emailVar.endsWith('@gmail.com') || emailVar.endsWith('@gmail.com.br') || 
+        emailVar.endsWith('@hotmail.com') || emailVar.endsWith('@hotmail.com.br') || 
+        emailVar.endsWith('@@outlook.com') || emailVar.endsWith('@outlook.com.br') || 
+        emailVar.endsWith('@yahoo.com') || emailVar.endsWith('@yahoo.com.br') || 
+        emailVar.endsWith('@sptech.school')) {
             // o email precisa terminar com umas dessas validaçôes.
             emai = true;
             email_input.style.border = "3px solid green";
@@ -115,17 +124,17 @@
             email_input.style.border = "3px solid red";
         }
 
-        var tamSenha = senha.length;
+        var tamSenha = senhaVar.length;
 
-        if (senha != confSenha) {
+        if (senhaVar != confirmacaoSenhaVar) {
             senha_input.style.border = "3px solid red";
             confirmacao_senha_input.style.border = "3px solid red";
-            msgSenha = `Senhas precisam ser iguais!`;
-        } else if (senha != "" && tamSenha < 6) {
+            div_msgSenha.innerHTML = `Senhas precisam ser iguais!`;
+        } else if (senhaVar != "" && tamSenha < 6) {
             senha_input.style.border = "3px solid red";
             confirmacao_senha_input.style.border = "3px solid red";
-            msgSenha = `Senha precisa conter no mínimo 6 caracteres!`
-        } else if (senha == "" || confSenha == "") {
+            div_msgSenha.innerHTML = `Senha precisa conter no mínimo 6 caracteres!`
+        } else if (senhaVar == "" || confirmacaoSenhaVar == "") {
             senha_input.style.border = "3px solid red";
             confirmacao_senha_input.style.border = "3px solid red";
         } else {
@@ -133,14 +142,14 @@
             var contemAlgum = false;
 
             while (i < listaObrigatorio.length) {
-                if (senha.includes(listaObrigatorio[i])) {
+                if (senhaVar.includes(listaObrigatorio[i])) {
                     contemAlgum = true;
                 }
                 i++;
             }
 
             if (contemAlgum == false) {
-                msgSenha = "Senha inválida! Falta caractere especial (! @ # $ % * . _ -)";
+                div_msgSenha.innerHTML = "Senha inválida! Falta caractere especial (! @ # $ % * . _ -)";
             } else {
                 senh = true;
                 senha_input.style.border = "3px solid green";
@@ -148,7 +157,43 @@
             }
         }
 
-        div_msgErro.innerHTML = msg;
-        div_msgSenha.innerHTML = msgSenha;
+        if (nom == true && emai == true && senh == true) {
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        }),
+        })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+            div_msgErro.innerHTML =
+                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+            setTimeout(() => {
+                window.location = "login.html";
+            }, "2000");
+
+            } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+        }
+        
     }
+
 </script>

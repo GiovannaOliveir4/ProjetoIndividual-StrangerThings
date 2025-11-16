@@ -21,6 +21,12 @@
                 class="material-symbols-outlined">keyboard_backspace</span></a>
             </div> <!-- fim seta -->
 
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+
             <div class="form-log">
                 <div class="card-log">
                 <h1>Seja bem vinda(o) Stranger Fã!</h1>
@@ -64,31 +70,95 @@
         }
     }
 
+    
+    // function entrar() {
+    //     var email = email_input.value;
+    //     var senha = senha_input.value;
+
+    //     email_input.style.border = "3px solid black";
+    //     senha_input.style.border = "3px solid black";
+
+    //     var msgSenha = "";
+    //     var msg = "";
+
+    //     var emai = false;
+    //     var senh = false;
+
+    //     if (email == "" || senha == "") {
+    //         email_input.style.border = "3px solid red";
+    //         senha_input.style.border = "3px solid red";
+    //         msg = `Preencha todos os campos!`;
+    //     } else {
+    //         emai = true;
+    //         email_input.style.border = "3px solid green";
+    //         senh = true;
+    //         senha_input.style.border = "3px solid green";
+    //     }
+
+    //   div_msgErro.innerHTML = msg;
+    //   div_msgSenha.innerHTML = msgSenha;
+    // }
+    
     function entrar() {
-        var email = email_input.value;
-        var senha = senha_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
 
         email_input.style.border = "3px solid black";
         senha_input.style.border = "3px solid black";
 
-        var msgSenha = "";
-        var msg = "";
-
-        var emai = false;
-        var senh = false;
-
-        if (email == "" || senha == "") {
+        if (emailVar == "" || senhaVar == "") {
             email_input.style.border = "3px solid red";
             senha_input.style.border = "3px solid red";
-            msg = `Preencha todos os campos!`;
+            div_msgErro.innerHTML = `Preencha todos os campos!`;
         } else {
-            emai = true;
-            email_input.style.border = "3px solid green";
-            senh = true;
-            senha_input.style.border = "3px solid green";
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
+
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+
+                        setTimeout(function () {
+                            window.location = "./dashboard/cards.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    div_msgErro.innerHTML = `Usúario não encontrado!!`;
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
         }
 
-        div_msgErro.innerHTML = msg;
-        div_msgSenha.innerHTML = msgSenha;
     }
+
 </script>
