@@ -21,7 +21,7 @@
             <a href="">Sobre Mim</a>
           </li>
           <li>
-            <a href="">Login</a>
+            <a href="login.html">Login</a>
           </li>
           <li>
             <a href="cadastro.html">Cadastro</a>
@@ -29,15 +29,17 @@
         </ul>
       </div>
     </div>
-  
-    <div class="banner">
-        <img src="assets/imgs/banner.png" alt="Banner Principal">
-      <div class="container">
-        <div class="texto">
-          <p>Ápresentado por <span>Giovanna de Oliveira</span></p>
-          <a href="">CONHECER</a>
+
+     <div class="apresentacao" id="apresentacao">
+        <div class="container">
+            <video src="assets/imgs/banner.mp4" autoplay loop muted></video>
         </div>
-      </div>
+        <div class="apresentacao-texto">
+            <h4>Bem vindo ao mundo de </h4>
+            <h1>Stranger Things</h1>
+            <h3>Apresentado por <span>Giovanna de Oliveira</span></h3>
+            <a href="" class="btn">Conhecer</a>
+        </div>
     </div>
 
     <div class="sobreST">
@@ -61,112 +63,111 @@
       </div>
     </div>
 
-    <div class="personagens">
+    
+  <div class="personagens">
+    <div class="ttl-personagens">
+      <h2>Conheça os <span>PERSONAGENS</span></h2>
+      <p>com maior relevância:</p>
+    </div>
+
+    <div class="carrossel">
       <div class="container">
-        <h1>Conheça os <span>PERSONAGENS</span></h1>
-        <p>com maior relevância:</p>
 
-        <div class="carrossel">
-          <!-- <div>seta esquerda</div> -->
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Onze</p>
-           </div>
+        <span class="seta esquerda" onclick="esquerda()">
+          <img src="assets/imgs/setaVoltar.png" alt="">
+        </span>
 
-           <div class="box">
-            <img src="assets/imgs/mike.jpeg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Mike</p>
-           </div>
 
-           <div class="box">
-            <img src="assets/imgs/will.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Lucas</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Dustin</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Will</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Joyce</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Jim Hopper</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Jonathan</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Nancy</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Steve</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/max.jpeg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Max</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Billy</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Robin</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Erica</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Dr. Martin</p>
-           </div>
-
-           <div class="box">
-            <img src="assets/imgs/onze.jpg" alt="">
-            <h2>1º TEMPORADA</h2>
-            <p>Vecna</p>
-           </div>
-          <!-- <div>seta direita</div> -->
+<div class="conteudo"> 
+        <div class="box">
+          <img src="assets/imgs/onze.png">
+          <h3>Onze</h3>
+          <p>1º TEMPORADA</p>
         </div>
+        <div class="box"> 
+          <img src="assets/imgs/mike.png">
+          <h3>Mike</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/lucas.png">
+          <h3>Lucas</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/dustin.png">
+          <h3>Dustin</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/will.png">
+          <h3>Will</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/joyce.png">
+          <h3>Joyce</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/hopper.png">
+          <h3>Jim Hopper</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/jonathan.png">
+          <h3>Jonathan</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/nancy.png">
+          <h3>Nancy</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/steve.png">
+          <h3>Steve</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/max.png">
+          <h3>Max</h3>
+          <p>2º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/billy.png">
+          <h3>Billy</h3>
+          <p>2º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/robin.png">
+          <h3>Robin</h3>
+          <p>3º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/erica.png">
+          <h3>Erica</h3>
+          <p>2º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/drMartin.png">
+          <h3>Dr. Martin</h3>
+          <p>1º TEMPORADA</p>
+        </div>
+        <div class="box"> 
+          <img src="assets/imgs/vecna.png">
+          <h3>Vecna</h3>
+          <p>4º TEMPORADA</p>
+        </div>
+</div>
+
+        <span class="seta direita" onclick="direita()">
+          <img src="assets/imgs/setaAvancar.png" alt="">
+        </span>
+
       </div>
     </div>
+  </div>
 
     <div class="descubra">
       <div class="container">
@@ -189,16 +190,16 @@
         <img src="assets/imgs/logo.png" alt="">
         <ul class="">
           <li>
-            <a href="">INÍCIO</a>
+            <a href="#apresentacao">INÍCIO</a>
           </li>
           <li>
             <a href="">SOBRE MIM</a>
           </li>
           <li>
-            <a href="">LOGIN</a>
+            <a href="login.html">LOGIN</a>
           </li>
           <li>
-            <a href="">CADASTRO</a>
+            <a href="cadastro.html">CADASTRO</a>
           </li>
         </ul> 
       </div>
@@ -206,3 +207,33 @@
 
 </body>
 </html>
+
+<script>
+  var conteudo = document.querySelector(".conteudo");
+  var boxes = document.querySelectorAll(".box");
+
+  var indice = 0;
+
+  function atuali() {
+      conteudo.style.transform = `translate(${-indice * 330}px)`;
+  }
+
+  function direita() {
+      indice++;
+      if (indice >= boxes.length) {
+          indice = 0; // volta ao começo
+      }
+      atuali();
+  }
+
+  function esquerda() {
+      indice--;
+      if (indice < 0) {
+          indice = boxes.length - 1; // vai para o último
+      }
+      atuali();
+  }
+
+  // autoplay
+  setInterval(direita, 2000);
+</script>
