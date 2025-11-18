@@ -43,12 +43,11 @@
     </div>
 
     <div class="sobreST">
-      <div class="container">
-        <div class="texto">
           <h1>A amizade é o maior poder em Hawkins</h1>
-
+      <div class="container">
+          <div class="texto">
           <p>Em meio a bicicletas, brincadeiras e muita imaginação, um grupo de amigos vive aventuras que vão muito além do que qualquer um poderia imaginar.
-          O que começa como dias comuns em uma cidade pacata logo se transforma em uma jornada repleta de segredos, desaparecimentos e fenômenos inexplicáveis. 
+          O que começa como dias comuns em uma cidade pacata logo se transforma em uma jornada repleta de segredos, desaparecimentos e fenômenos inexplicáveis.
           <br><br>
           Enquanto tentam entender o que está acontecendo, eles descobrem que o perigo pode estar muito mais perto do que pensam, e que algumas forças ultrapassam os limites da realidade.
           Mesmo assim, a coragem e a amizade do grupo se tornam suas maiores armas para enfrentar o desconhecido.
@@ -64,7 +63,7 @@
     </div>
 
     
-  <div class="personagens">
+  <div class="personagens" id="pers">
     <div class="ttl-personagens">
       <h2>Conheça os <span>PERSONAGENS</span></h2>
       <p>com maior relevância:</p>
@@ -170,17 +169,20 @@
   </div>
 
     <div class="descubra">
-      <div class="container">
+      <div class="container-fa">
         <h2>Você é fã de verdade? Descubra agora!</h2>
         <p>Digite quantas temporadas você já assistiu:</p>
-        <input type="number">
-        <button>VER RESULTADO</button>
-        <div id="div_mensagem"></div>
+        <div class="interacao">  
+          <input type="number" id="temporadas_input">
+          <button onclick="descobrir()">VER RESULTADO</button>
+        </div>
+        <div id="div_mensagem" style="font-weight: 800;"></div>
       </div>
 
-      <div class="container">
+      <div class="container-corra">
         <h2>Corra, desafie o demogorgon e prove sua coragem!</h2>
-        <p>Entre no mundo de Stranger Things e descubra até onde você consegue chegar antes que o monstro te alcance.</p>
+        <p>Entre no mundo de Stranger Things e descubra até onde 
+        <br>você consegue chegar antes que o monstro te alcance.</p>
         <a href="">ENTRE OU CADASTRE-SE</a>
       </div>
     </div>
@@ -188,7 +190,7 @@
     <div class="footer">
       <div class="container">
         <img src="assets/imgs/logo.png" alt="">
-        <ul class="">
+        <ul class="links">
           <li>
             <a href="#apresentacao">INÍCIO</a>
           </li>
@@ -202,6 +204,10 @@
             <a href="cadastro.html">CADASTRO</a>
           </li>
         </ul> 
+      </div>
+      <div class="redes">
+        <img src="assets/icon/github.png" onclick="github()">
+        <img src="assets/icon/linkedln.png" onclick="linkedln()">
       </div>
     </div>
 
@@ -220,7 +226,7 @@
 
   function direita() {
       indice++;
-      if (indice >= boxes.length) {
+      if (indice >= boxes.length - 3) {
           indice = 0; // volta ao começo
       }
       atuali();
@@ -236,4 +242,41 @@
 
   // autoplay
   setInterval(direita, 2000);
+
+  function descobrir() {
+    var temporadas = Number(temporadas_input.value);
+
+    div_mensagem.innerHTML = "";
+
+    if (temporadas < 0) {
+      div_mensagem.innerHTML = `ERRO! Nem um hater chega nesse nível, número negativo não pode!`;
+      div_mensagem.style.color = "red";
+    } else if (temporadas == 0) {
+      div_mensagem.innerHTML = `Nada fã! Mas todo fã começa do zero!`;
+      div_mensagem.style.color = "red";
+    } else if (temporadas == 1) {
+      div_mensagem.innerHTML = `Quase fã! Já está entrando no clima de Hawkins!`;
+      div_mensagem.style.color = "yellow";
+    } else if (temporadas == 2 || temporadas == 3) {
+      div_mensagem.innerHTML = `Fã! Já sabe quem é quem e começa a se apegar nos personagens errados!`;
+      div_mensagem.style.color = "orange";
+    } else if (temporadas == 4) {
+      div_mensagem.innerHTML = `Você é fã de verdade! Ansioso para a 5º temporada???`;
+      div_mensagem.style.color = "green";
+    } else if (temporadas == 5) {
+      div_mensagem.innerHTML = `Viajante do tempo! A 5º temporada só sai dia 26 de novembro!`;
+      div_mensagem.style.color = "red";
+    } else {
+      div_mensagem.innerHTML = `ERRO! Essa temporada é inexistente, a série acaba na 5º!`;
+      div_mensagem.style.color = "red";
+    }
+  }
+
+  function github() {
+    window.location = "https://github.com/GiovannaOliveir4"
+  }
+
+  function linkedln() {
+    window.location = "https://www.linkedin.com/in/giovannadeoliveirax/"
+  }
 </script>

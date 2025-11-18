@@ -102,20 +102,40 @@
     font-size: 19px;
 }
 
+.sobreST {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #421C1F;
+    color: #fff;
+    border-bottom: solid 3px rgba(3, 14, 41, 0.214);
+}
+
+.sobreST h1 {
+    font-size: 40px;
+    padding-bottom: 50px;
+}
 
 .sobreST .container {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.sobreST .container .texto {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.sobreST .texto {
+    width: 50%;
+    padding: 40px;
+    font-size: 18px;
 }
 
-
-
-
+.sobreST img {
+    height: 430px;
+    margin-right: 40px;
+    margin-left: 40px;
+    border-radius: 40px;
+}
 
 .personagens {
     height: 90vh;
@@ -204,9 +224,115 @@
     font-size: 20px;
 }
 
+.descubra {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url(../assets/imgs/mundoInvertido.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+}
 
+.descubra .container-fa, .descubra .container-corra {
+    height: 40%;
+    width: 80%;
+    background-color: black;
+    border-radius: 20px;
+    border: solid 2px #421C1F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
+.descubra .container-fa h2, .descubra .container-corra h2 {
+    font-size: 30px;
+}
 
+.descubra .container-fa p, .descubra .container-corra p {
+    font-size: 20px;
+}
+
+.descubra .container-fa input{
+    border-radius: 20px;
+    height: 20px;
+}
+
+.descubra .container-fa button, .descubra .container-corra a {
+    background-color: #421C1F;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 17px;
+}
+
+.descubra .container-fa button {
+    height: 40px;
+    width: 180px;
+}
+
+.descubra .container-corra a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 250px;
+}
+
+.footer {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer .container img {
+    width: 150px;
+}
+
+.links {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.links li {
+    padding: 10px 30px 20px 30px;
+    color: #fff;
+}
+
+.links a {
+    color: #fff;
+}
+
+.links a:hover {
+    font-weight: 800;
+    color: #fb2020;
+    font-size: 18px;
+}
+
+.redes {
+    display: flex;
+    width: 5%;
+    justify-content: space-between;
+}
+
+.redes img {
+    width: 31px;
+    height: 30px;
+}
+
+.redes img:hover {
+    cursor: pointer;
+}
 
 
 /* CADASTRO */
