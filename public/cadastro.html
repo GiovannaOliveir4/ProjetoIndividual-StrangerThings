@@ -22,10 +22,26 @@
 
         <div class="banner-cad">
             <img src="assets/imgs/cadastro.jpg" alt="">
+            <div class="verPersonagens" id="divVer">
+                <img src="assets/imgs/personagens.png">
+            </div>
         </div>
         <div class="form-cad">
             <div class="card-cad">
                 <h1>Cadastre-se e vire um Stranger Fã!</h1>
+                <div class="slc">
+                    <span>ESCOLHA UM PERSONAGEM:</span>
+                    <select onclick="ver()" onmouseleave="tirar()" id="personagem_select" style="border: 3px solid black;">
+                        <option value="#"></option>
+                        <option value="1">Onze</option>
+                        <option value="2">Mike</option>
+                        <option value="3">Lucas</option>
+                        <option value="4">Will</option>
+                        <option value="5">Dustin</option>
+                        <option value="6">Max</option>
+                    </select>
+                    <!-- <button onclick="ver()">VER</button> -->
+                </div>
                 <div class="textfield">
                     <span>Nome:</span>
                     <input type="text" id="nome_input" placeholder="ex: Giovanna" style="border: 3px solid black;">
@@ -60,6 +76,8 @@
 <script>
     var listaObrigatorio = ['!', '@', '#', '$', '%', '*', '.', '_', '-'];
 
+    tirar()
+
     function mostrarSenha() {
         var senha = senha_input;
         var confSenha = confirmacao_senha_input;
@@ -73,30 +91,47 @@
         }
     }
 
+    function ver() {
+        divVer.style.display = "block";
+        // setTimeout(() => {
+        //     divVer.style.display = "none";
+        // }, "4000");
+    }
+
+    function tirar() {
+        divVer.style.display = "none";
+    }
+
     function cadastrar() {
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
+        var personagemVar = personagem_select.value;
         var nomeVar = nome_input.value;
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
+        personagem_select.border = "3px solid black"
         nome_input.style.border = "3px solid black";
         email_input.style.border = "3px solid black";
         senha_input.style.border = "3px solid black";
         confirmacao_senha_input.style.border = "3px solid black";
+        div_msgErro.style.color = "black"
 
+        var per = false;
         var nom = false;
         var emai = false;
         var senh = false;
 
         // Verificando se há algum campo em branco
         if (
-        nomeVar == "" ||
-        emailVar == "" ||
-        senhaVar == "" ||
+        personagemVar == "#" &&
+        nomeVar == "" &&
+        emailVar == "" &&
+        senhaVar == "" &&
         confirmacaoSenhaVar == ""
         ) {
+            personagem_select.style.border = "3px solid red";
             nome_input.style.border = "3px solid red";
             email_input.style.border = "3px solid red";
             senha_input.style.border = "3px solid red";
@@ -104,7 +139,29 @@
             div_msgErro.innerHTML = `Preencha todos os campos!`;
 
         return false;
-        } 
+
+        } else if (personagemVar == "#") {
+            personagem_select.style.border = "3px solid red";
+        } else if (nomeVar == "") {
+            nome_input.style.border = "3px solid red";
+        } else if (emailVar == "") {
+            email_input.style.border = "3px solid red";
+        } else if (senhaVar == "") {
+            senha_input.style.border = "3px solid red";
+        } else if (confirmacaoSenhaVar == "") {
+            confirmacao_senha_input.style.border = "3px solid red";
+        } else {
+            personagem_select.style.border = "3px solid green";
+            nome_input.style.border = "3px solid green";
+            email_input.style.border = "3px solid green";
+            senha_input.style.border = "3px solid green";
+            confirmacao_senha_input.style.border = "3px solid green";
+        }
+
+        if (personagemVar != "#") {
+            per = true;
+            personagem_select.style.border = "3px solid green";
+        }
 
         if (nomeVar != "") {
             nom = true;
@@ -157,7 +214,7 @@
             }
         }
 
-        if (nom == true && emai == true && senh == true) {
+        if (per == true && nom == true && emai == true && senh == true) {
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
         method: "POST",
@@ -167,6 +224,7 @@
         body: JSON.stringify({
             // crie um atributo que recebe o valor recuperado aqui
             // Agora vá para o arquivo routes/usuario.js
+            personagemServer: personagemVar,
             nomeServer: nomeVar,
             emailServer: emailVar,
             senhaServer: senhaVar
@@ -178,7 +236,7 @@
             if (resposta.ok) {
             div_msgErro.innerHTML =
                 "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+                div_msgErro.style.color = "green"
             setTimeout(() => {
                 window.location = "login.html";
             }, "2000");
@@ -189,6 +247,8 @@
         })
         .catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
+            div_msgErro.style.color = "red"
+            div_msgErro.innerHTML = `ERRO! ${resposta}`;
         });
 
         return false;

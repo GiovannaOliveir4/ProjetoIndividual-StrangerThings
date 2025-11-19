@@ -111,6 +111,7 @@
     background-color: #421C1F;
     color: #fff;
     border-bottom: solid 3px rgba(3, 14, 41, 0.214);
+    text-align: justify;
 }
 
 .sobreST h1 {
@@ -365,6 +366,13 @@
     align-items: center;
 }
 
+.verPersonagens {
+    position: absolute;
+    width: 47%;
+    top: 1px;
+    z-index: 9999;
+}
+
 .form-cad {
     width: 50vw;
     height: 90vh;
@@ -415,6 +423,18 @@
     padding: 20px 20px 0px 20px;
 }
 
+.slc {
+    padding-top: 10px;
+}
+
+.slc select {
+    width: 24%;
+    border-radius: 10px;
+    font-size: 12pt;
+    outline: none;
+    box-sizing: border-box;
+}
+
 /* SERVE PARA CADASTRO E LOGIN */
 .textfield {
     width: 100%;
@@ -427,7 +447,6 @@
 
 .textfield input {
     width: 100%;
-    border: none;
     border-radius: 10px;
     padding: 15px;
     font-size: 12pt;
