@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corra do Demogorgon</title>
+
+    <link rel="stylesheet" href="css/jogo.css">
+</head>
+<body onkeydown="pular()">
+    <div class="main" >
+        <div class="navbar">
+            <div class="perfil">
+                <img src="assets/imgs/foto.png" alt="">
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="dashboard/dashboard.html">DASHBOARD</a>
+                </li>
+                <li class="agora">
+                    <a href="#">JOGAR</a>
+                </li>
+            </ul>
+                <a href="index.html">SAIR</a>
+        </div>
+
+        <div class="container">
+
+            <div class="jogo">
+                <div class="pontuacao" id="div_pontos">
+                    PONTUAÇÃO: 0
+                </div>
+                <!-- <img src="assets/imgs/particulas.png" class="particulas"> -->
+                <img src="assets/imgs/onze.gif" id="personagem" class="personagem">
+                <img src="assets/imgs/obstaculo.png" id="obstaculo" class="obstaculo">
+            </div>
+                <div class="jogarNovamente" id="jogarNovamente" style="display: none;">
+                    <div class="interacao">
+                        <button onclick="reiniciarJogo()">JOGAR NOVAMENTE</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="js/jogo.js" defer></script>

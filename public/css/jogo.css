@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+.main {
+    display: flex;
+    height: 100vh;
+}
+
+.navbar {
+    background-color: #421C1F;
+    height: 100%;
+    width: 15%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar .perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar .perfil img {
+   width: 90px;
+   padding-bottom: 10px;
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.navbar li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar a {
+    color: #fff;
+}
+
+.navbar a:hover {
+    font-size: 20px;
+}
+
+.navbar .agora a {
+    color: #fb2020;
+    font-weight: 800;
+}
+
+.container {
+    width: 85%;
+    background: #2F4F4F;
+}
+
+.jogo {
+    width: 100%;
+    height: 500px;
+    border-bottom: 15px solid #2F4F4F;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#000000, #0F4C75);
+}
+
+.obstaculo {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    animation: obstaculo-animado 1.5s infinite linear;
+}
+
+.personagem {
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+}
+
+.pular {
+    animation: pular 500ms infinite ease-out;
+}
+
+.pontuacao {
+    color: #fff;
+    padding-top: 20px;
+    padding-left: 45%;
+}
+
+/* .particulas {
+    width: 200vw;
+    position: absolute;
+    animation: particulas-animada 10s infinite linear ;
+} */
+
+.jogarNovamente {
+    background-color: #421C1F;
+    height: 60%;
+    position: relative;
+    bottom: 50vh;
+    width: 90%;
+    margin-left: 65px;
+}
+
+.interacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    color: #fff;
+}
+
+.interacao button {
+    width: 160px;
+    border-radius: 40px;
+    height: 40px;
+    font-weight: 800;
+    margin: 90px;
+}
+
+@keyframes obstaculo-animado {
+    from {
+        right: -80px;
+    }
+
+    to {
+        right: 100%;
+    }
+
+}
+
+@keyframes pular {
+    0% {
+        bottom: 0;
+    }
+
+    40% {
+        bottom: 180px;
+    }
+
+    50% {
+        bottom: 180px;
+    }
+
+    60% {
+        bottom: 180px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+/* @keyframes particulas-animada {
+    from {
+        right: 0vw;
+    }
+
+    to {
+        right: 10%;
+    } 
+} */
