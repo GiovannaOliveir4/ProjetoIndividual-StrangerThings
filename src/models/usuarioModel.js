@@ -22,7 +22,15 @@ function cadastrar(fkPersonagem, nome, email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function totalUsuarios() {
+    var instrucao = `
+        SELECT COUNT(idUsuario) AS totalUsuarios FROM usuario;
+    `;
+    return database.executar(instrucao);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    totalUsuarios
 };

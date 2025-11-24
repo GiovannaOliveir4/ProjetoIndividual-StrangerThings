@@ -77,83 +77,83 @@
         </span>
 
 
-<div class="conteudo"> 
-        <div class="box">
+<div class="conteudo" id="conteudo" onmouseenter="pausar()"> 
+        <div class="box" id="box">
           <img src="assets/imgs/onze.png">
           <h3>Onze</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/mike.png">
           <h3>Mike</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/lucas.png">
           <h3>Lucas</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/dustin.png">
           <h3>Dustin</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/will.png">
           <h3>Will</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/joyce.png">
           <h3>Joyce</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/hopper.png">
           <h3>Jim Hopper</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/jonathan.png">
           <h3>Jonathan</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/nancy.png">
           <h3>Nancy</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/steve.png">
           <h3>Steve</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/max.png">
           <h3>Max</h3>
           <p>2º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/billy.png">
           <h3>Billy</h3>
           <p>2º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/robin.png">
           <h3>Robin</h3>
           <p>3º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/erica.png">
           <h3>Erica</h3>
           <p>2º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/drMartin.png">
           <h3>Dr. Martin</h3>
           <p>1º TEMPORADA</p>
         </div>
-        <div class="box"> 
+        <div class="box" id="box"> 
           <img src="assets/imgs/vecna.png">
           <h3>Vecna</h3>
           <p>4º TEMPORADA</p>
@@ -215,8 +215,9 @@
 </html>
 
 <script>
-  var conteudo = document.querySelector(".conteudo");
-  var boxes = document.querySelectorAll(".box");
+  var conteudo = document.getElementById("conteudo");
+  var boxes = document.getElementById("box");
+  var tamanhoCarrossel = 13;
 
   var indice = 0;
 
@@ -226,7 +227,7 @@
 
   function direita() {
       indice++;
-      if (indice >= boxes.length - 3) {
+      if (indice >= tamanhoCarrossel) {
           indice = 0; // volta ao começo
       }
       atuali();
@@ -235,13 +236,16 @@
   function esquerda() {
       indice--;
       if (indice < 0) {
-          indice = boxes.length - 1; // vai para o último
+          indice = tamanhoCarrossel - 1; // vai para o último
       }
       atuali();
   }
-
   // autoplay
-  setInterval(direita, 2000);
+  var girar = setInterval(direita, 2000);
+
+  function pausar() {
+    clearInterval(girar);
+  }
 
   function descobrir() {
     var temporadas = Number(temporadas_input.value);

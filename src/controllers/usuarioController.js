@@ -20,7 +20,7 @@ function autenticar(req, res) {
                         console.log(resultadoAutenticar);
 
                         res.json({
-                            id: resultadoAutenticar[0].id,
+                            idUsuario: resultadoAutenticar[0].idUsuario,
                             fkPersonagem: resultadoAutenticar[0].fkPersonagem,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
@@ -79,7 +79,20 @@ function cadastrar(req, res) {
     }
 }
 
+
+function totalUsuarios(req, res) {
+    usuarioModel.totalUsuarios()
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.log("Erro ao buscar total usuários:", erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    totalUsuarios
 }

@@ -36,9 +36,9 @@ fkUsuario INT,
 INSERT INTO personagem VALUES 
 	(1, 'Onze', '1'),
 	(2, 'Mike', '1'),
-	(3, 'Lucas', '1'),
+	(3, 'Dustin', '1'),
 	(4, 'Will', '1'),
-	(5, 'Dustin', '1'),
+	(5, 'Lucas', '1'),
 	(6, 'Max', '2');
 
 

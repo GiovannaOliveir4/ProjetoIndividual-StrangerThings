@@ -31,13 +31,13 @@
                 <h1>Cadastre-se e vire um Stranger Fã!</h1>
                 <div class="slc">
                     <span>ESCOLHA UM PERSONAGEM:</span>
-                    <select onclick="ver()" onmouseleave="tirar()" id="personagem_select" style="border: 3px solid black;">
+                    <select onmouseenter="ver()" onpointerleave="tirar()" onchange="tirar()" id="personagem_select" style="border: 3px solid black;">
                         <option value="#"></option>
                         <option value="1">Onze</option>
                         <option value="2">Mike</option>
-                        <option value="3">Lucas</option>
+                        <option value="3">Dustin</option>
                         <option value="4">Will</option>
-                        <option value="5">Dustin</option>
+                        <option value="5">Lucas</option>
                         <option value="6">Max</option>
                     </select>
                     <!-- <button onclick="ver()">VER</button> -->
@@ -93,9 +93,9 @@
 
     function ver() {
         divVer.style.display = "block";
-        // setTimeout(() => {
-        //     divVer.style.display = "none";
-        // }, "4000");
+        //  setTimeout(() => {
+        //      divVer.style.display = "none";
+        //  }, "4000");
     }
 
     function tirar() {
