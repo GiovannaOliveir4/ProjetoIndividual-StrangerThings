@@ -33,6 +33,7 @@
 .navbar .perfil img {
    width: 90px;
    padding-bottom: 10px;
+   border-radius: 50px;
 }
 
 .navbar ul {

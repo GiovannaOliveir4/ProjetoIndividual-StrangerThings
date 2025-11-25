@@ -13,7 +13,7 @@
     <div class="main">
         <div class="navbar">
             <div class="perfil">
-                <img src="../assets/imgs/foto.png" alt="">
+                <img id="fotoPerfil" src="" alt="">
                 <div class="hello">
                     <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
                 </div>
@@ -72,6 +72,21 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    fkPersonagem = sessionStorage.FK_PERSONAGEM;
+
+    if (fkPersonagem == 1) {
+        fotoPerfil.src = "../assets/imgs/perfilOnze.jpeg";
+    } else if (fkPersonagem == 2) {
+        fotoPerfil.src = "../assets/imgs/perfilMike.jpeg";
+    } else if (fkPersonagem == 3) {
+        fotoPerfil.src = "../assets/imgs/perfilDustin.jpeg";
+    } else if (fkPersonagem == 4) {
+        fotoPerfil.src = "../assets/imgs/perfilWill.jpeg";
+    } else if (fkPersonagem == 5) {
+        fotoPerfil.src = "../assets/imgs/perfilLucas.jpeg";
+    } else {
+        fotoPerfil.src = "../assets/imgs/perfilMax.jpeg";
+    }
 
     function obterDados() {
         fetch("/partidas/buscarTop3")
@@ -166,7 +181,7 @@ function obterKpiTotalUsuarios() {
                             color: '#fff'
                         },
                         grid: {
-                            color: '#fff'
+                            color: '#D3D3D3'
                         }
                     },
                     x: {
