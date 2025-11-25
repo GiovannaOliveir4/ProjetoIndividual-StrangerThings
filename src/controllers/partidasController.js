@@ -76,9 +76,23 @@ function maiorPontuacao(req, res) {
         });
 }
 
+function qtdPartidas(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    partidasModel.qtdPartidas(idUsuario)
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.log("Erro ao buscar quantidade de partidas:", erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     cadastrarPartidas,
     buscarTop3,
     buscarPersonagensEscolhidos,
-    maiorPontuacao
+    maiorPontuacao,
+    qtdPartidas
 }

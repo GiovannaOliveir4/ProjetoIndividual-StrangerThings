@@ -55,9 +55,19 @@ function maiorPontuacao(idUsuario) {
     return database.executar(instrucao);
 }
 
+function qtdPartidas(idUsuario) {
+    var instrucaoSql = `
+        SELECT COUNT(idPartida) AS qtdPartidas
+        FROM partida 
+        WHERE fkUsuario = ${idUsuario};
+    `;
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     cadastrarPartidas,
     buscarTop3,
     buscarPersonagensEscolhidos,
-    maiorPontuacao
+    maiorPontuacao,
+    qtdPartidas
 };

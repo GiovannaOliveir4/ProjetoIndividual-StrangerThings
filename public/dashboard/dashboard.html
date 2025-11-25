@@ -34,24 +34,25 @@
             <div class="kpis">
                 <div class="kpi">
                     <h3>Sua maior pontuação:</h3>
-                    <p id="kpi_maior_pontuacao">0</p>
+                    <p id="kpiMaiorPontuacao">0</p>
                 </div>
                 
                 <div class="kpi">
-                    <h3>Quantidade de tentativas:</h3>
-                    <p id="">KPI</p>
+                    <h3>Suas partidas jogadas:</h3>
+                    <p id="kpiQtdPartidas">KPI</p>
                 </div>
 
                 <div class="kpi">
-                    <h3>Quantidade de usuários:</h3>
-                    <p id="kpi_total_usuarios">0</p>
+                    <h3>Usuários cadastrados:</h3>
+                    <p id="kpiTotalUsuarios">0</p>
                 </div>
             </div>
+            
                 
 
             <div class="graficos">
                 <div class="grafico">
-                    <h3>Ranking das 3 maiores pontuções:</h3>
+                    <h3>Top 3 maiores pontuações:</h3>
                     <canvas id="graficoBarra"></canvas>
                 </div>
 
@@ -98,28 +99,40 @@
             })
 
             obterKpiMaiorPontuacao();
-            obterKpiTotalUsuarios();    
+            obterKpiTotalUsuarios();  
+            obterKpiQtdPartidas();  
     }
 
-    function obterKpiMaiorPontuacao() {
+function obterKpiMaiorPontuacao() {
     fetch(`/partidas/maiorPontuacao/${sessionStorage.ID_USUARIO}`)
         .then(r => r.json())
         .then(resposta => {
-            document.getElementById("kpi_maior_pontuacao").innerHTML =
+            document.getElementById("kpiMaiorPontuacao").innerHTML =
                 resposta[0].maiorPontuacao;
         })
         .catch(erro => console.error("Erro KPI pontuação:", erro));
 }
 
-    function obterKpiTotalUsuarios() {
+function obterKpiQtdPartidas() {
+    fetch(`/partidas/qtdPartidas/${sessionStorage.ID_USUARIO}`)
+        .then(r => r.json())
+        .then(resposta => {
+            document.getElementById("kpiQtdPartidas").innerHTML =
+                resposta[0].qtdPartidas;
+        })
+        .catch(erro => console.error("Erro KPI quantidade de partidas:", erro));
+}
+
+function obterKpiTotalUsuarios() {
     fetch("/usuarios/totalUsuarios")
         .then(r => r.json())
         .then(resposta => {
-            document.getElementById("kpi_total_usuarios").innerHTML =
+            document.getElementById("kpiTotalUsuarios").innerHTML =
                 resposta[0].totalUsuarios;
         })
         .catch(erro => console.error("Erro KPI total usuários:", erro));
 }
+
 
 
     // function obterKpiInscricoes() {

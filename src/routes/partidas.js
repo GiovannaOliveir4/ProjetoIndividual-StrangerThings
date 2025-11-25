@@ -20,4 +20,8 @@ router.get("/maiorPontuacao/:idUsuario", function (req, res) {
     partidasController.maiorPontuacao(req, res);
 });
 
+router.get("/qtdPartidas/:idUsuario", function (req, res) {
+    partidasController.qtdPartidas(req, res);
+});
+
 module.exports = router; 
