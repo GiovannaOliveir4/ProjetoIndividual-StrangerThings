@@ -18,7 +18,7 @@
             <a href="#">Inicial</a>
           </li>
           <li>
-            <a href="">Sobre Mim</a>
+            <a href="sobremim.html">Sobre Mim</a>
           </li>
           <li>
             <a href="login.html">Login</a>
@@ -180,9 +180,8 @@
       </div>
 
       <div class="container-corra">
-        <h2>Corra, desafie o demogorgon e prove sua coragem!</h2>
-        <p>Entre no mundo de Stranger Things e descubra até onde 
-        <br>você consegue chegar antes que o monstro te alcance.</p>
+        <h2>Corra, se desafie e prove sua coragem!</h2>
+        <p>Entre no mundo de Stranger Things e descubra até onde você consegue chegar.</p>
         <a href="login.html">ENTRE OU CADASTRE-SE</a>
       </div>
     </div>
@@ -195,7 +194,7 @@
             <a href="#apresentacao">INÍCIO</a>
           </li>
           <li>
-            <a href="">SOBRE MIM</a>
+            <a href="sobremim.html">SOBRE MIM</a>
           </li>
           <li>
             <a href="login.html">LOGIN</a>
@@ -248,32 +247,42 @@
   }
 
   function descobrir() {
-    var temporadas = Number(temporadas_input.value);
+    var totalTemp = 5;
+    var horaMediaTemp = 9.6;
 
-    div_mensagem.innerHTML = "";
+    var tempAssistidas = temporadas_input.value;
 
-    if (temporadas < 0) {
-      div_mensagem.innerHTML = `ERRO! Nem um hater chega nesse nível, número negativo não pode!`;
+    var msg = "";
+    div_mensagem.style.color = "#fff";
+
+    if (tempAssistidas == "" || tempAssistidas > 5) {
+      msg = `ERRO! Digite um número de temporadas válido!`;
       div_mensagem.style.color = "red";
-    } else if (temporadas == 0) {
-      div_mensagem.innerHTML = `Nada fã! Mas todo fã começa do zero!`;
-      div_mensagem.style.color = "red";
-    } else if (temporadas == 1) {
-      div_mensagem.innerHTML = `Quase fã! Já está entrando no clima de Hawkins!`;
-      div_mensagem.style.color = "yellow";
-    } else if (temporadas == 2 || temporadas == 3) {
-      div_mensagem.innerHTML = `Fã! Já sabe quem é quem e começa a se apegar nos personagens errados!`;
-      div_mensagem.style.color = "orange";
-    } else if (temporadas == 4) {
-      div_mensagem.innerHTML = `Você é fã de verdade! Ansioso para a 5º temporada???`;
-      div_mensagem.style.color = "green";
-    } else if (temporadas == 5) {
-      div_mensagem.innerHTML = `Viajante do tempo! A 5º temporada só sai dia 26 de novembro!`;
+      
+    } else if (tempAssistidas == 0) {
+      msg = "Onde você estava? Você precisa começar a assistir agora!";
       div_mensagem.style.color = "red";
     } else {
-      div_mensagem.innerHTML = `ERRO! Essa temporada é inexistente, a série acaba na 5º!`;
-      div_mensagem.style.color = "red";
+      var totalHrAssistidas = tempAssistidas * horaMediaTemp;
+      var porcentagem = (tempAssistidas / totalTemp) * 100 ;
+      porcentagem = porcentagem.toFixed(0);
+
+      if (tempAssistidas == totalTemp) {
+          msg = "VOCÊ TERMINOU A SÉRIE! Assistir as 5 temporadas prova que você é muito fã!";
+          div_mensagem.style.color = "green";
+      } else if (tempAssistidas == (totalTemp - 1)) {
+          msg = "Contagem regressiva! Você está a apenas uma temporada de terminar a série!";
+          div_mensagem.style.color = "yellow";
+      } else {
+          msg = "Você está no caminho, mas ainda tem muitos mistérios para desvendar!";
+          div_mensagem.style.color = "orange";
+      } 
+
+      msg += `<br> Média de horas dedicadas: ${totalHrAssistidas.toFixed(1)} horas <br>
+      Porcentagem assistida: ${porcentagem}%`;
     }
+
+    div_mensagem.innerHTML = msg;
   }
 
   function github() {

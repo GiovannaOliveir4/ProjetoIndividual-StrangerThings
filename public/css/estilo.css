@@ -37,6 +37,10 @@
     color: #fff;
 }
 
+.navbar a:hover {
+    color: #fb2020;
+}
+
 .agora {
     font-weight: 800;
 }
@@ -590,3 +594,34 @@
 .conta {
     margin-top: 20px;
 }
+
+
+/* SOBRE MIM */
+.sobreMim {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1d0d0f;
+}
+
+.sobreMim .textos {
+    text-align: justify;
+    padding: 40px;
+    width: 60%;
+    color: #fff;
+}
+
+.sobreMim .textos .texto {
+    padding-top: 30px;
+}
+
+.sobreMim span {
+    color: #fb2020;
+    font-weight: 700;
+}
+
+.sobreMim .fotoMinha {
+    padding: 80px 40px 40px 20px;
+}
+
