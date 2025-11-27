@@ -625,3 +625,49 @@
     padding: 80px 40px 40px 20px;
 }
 
+.linhaVida {
+    background-color: #1d0d0f;
+    border: solid 1px #331618;
+    color: #fff;
+}
+
+.linhaVida img {
+    width: 30%;
+    padding: 50px 0px 50px 0px;
+}
+
+.linhaVida p {
+    width: 50%;
+}
+
+.linhaVida .família {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.linhaVida .aniversario {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+.conclusao {
+    background-color: #1d0d0f;
+    color: #fff;
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.conclusao span {
+    color: #fb2020;
+}
+
+.conclusao .texto {
+    width: 80%;
+}

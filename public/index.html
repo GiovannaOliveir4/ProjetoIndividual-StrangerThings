@@ -255,7 +255,7 @@
     var msg = "";
     div_mensagem.style.color = "#fff";
 
-    if (tempAssistidas == "" || tempAssistidas > 5) {
+    if (tempAssistidas == "" || tempAssistidas < 0 || tempAssistidas > 5) {
       msg = `ERRO! Digite um número de temporadas válido!`;
       div_mensagem.style.color = "red";
       

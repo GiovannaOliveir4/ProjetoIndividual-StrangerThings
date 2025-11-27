@@ -31,7 +31,7 @@ var pontuacao = 0;
 var pontoContado = false; // evita pontuar várias vezes
 
 var pular = () => {
-    personagem.classList.add('pular');
+    personagem.classList.add('pular'); // adiciona 
     
     setTimeout(() => {
 
@@ -46,8 +46,8 @@ var partidaCadastrada = false;
 var loop = setInterval(() => {
 
     var posicaoObstaculo = obstaculo.offsetLeft;
-    var posicaoPersonagem = window.getComputedStyle(personagem).bottom.replace('px', '');
-    
+    var posicaoPersonagem = window.getComputedStyle(personagem).bottom.replace('px', ''); // pega todas as propriedas de css do "personagem"
+    // 
     
     if (posicaoObstaculo <= 100 && posicaoObstaculo > 0 && posicaoPersonagem < 80) {
         
